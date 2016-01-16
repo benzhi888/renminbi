@@ -1,6 +1,6 @@
 [Protocol]
-exec=vericoin-qt '%u'
-protocol=vericoin
+exec=renminbi-qt '%u'
+protocol=renminbi
 input=none
 output=none
 helper=true

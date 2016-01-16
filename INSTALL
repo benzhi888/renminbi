@@ -1,9 +1,9 @@
-Building VeriCoin
+Building Renminbi
 
-See doc/readme-qt.rst for instructions on building VeriCoin QT,
+See doc/readme-qt.rst for instructions on building Renminbi QT,
 the intended-for-end-users, nice-graphical-interface, reference
-implementation of VeriCoin.
+implementation of Renminbi.
 
-See doc/build-*.txt for instructions on building vericoind,
+See doc/build-*.txt for instructions on building renminbid,
 the intended-for-services, no-graphical-interface, reference
-implementation of VeriCoin.
+implementation of Renminbi.

@@ -140,7 +140,7 @@ void setFontPixelSizes()
     setFontPixelSize((QFont *)&qFontLargerBold);
 }
 
-// Common VeriCoin stylesheets
+// Common Renminbi stylesheets
 QString veriCentralWidgetStyleSheet = QString("QStackedWidget { background: white; } ");
 QString veriTabWidgetStyleSheet = QString("QTabWidget::pane { background: white; color: " + STR_FONT_COLOR + "; border: 1px; }");
 
@@ -238,8 +238,8 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
 
 bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    // VeriCoin: check prefix
-    if(uri.scheme() != QString("vericoin"))
+    // Renminbi: check prefix
+    if(uri.scheme() != QString("renminbi"))
         return false;
 
     SendCoinsRecipient rv;
@@ -284,13 +284,13 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 
 bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
 {
-    // Convert vericoin:// to vericoin:
+    // Convert renminbi:// to renminbi:
     //
     //    Cannot handle this later, because bitcoin:// will cause Qt to see the part after // as host,
     //    which will lower-case it (and thus invalidate the address).
-    if(uri.startsWith("vericoin://"))
+    if(uri.startsWith("renminbi://"))
     {
-        uri.replace(0, 12, "vericoin:");
+        uri.replace(0, 12, "renminbi:");
     }
     QUrl uriInstance(uri);
     return parseBitcoinURI(uriInstance, out);
@@ -434,7 +434,7 @@ bool ToolTipToRichTextFilter::eventFilter(QObject *obj, QEvent *evt)
 #ifdef WIN32
 boost::filesystem::path static StartupShortcutPath()
 {
-    return GetSpecialFolderPath(CSIDL_STARTUP) / "VeriCoin.lnk";
+    return GetSpecialFolderPath(CSIDL_STARTUP) / "Renminbi.lnk";
 }
 
 bool GetStartOnSystemStartup()
@@ -516,7 +516,7 @@ boost::filesystem::path static GetAutostartDir()
 
 boost::filesystem::path static GetAutostartFilePath()
 {
-    return GetAutostartDir() / "vericoin.desktop";
+    return GetAutostartDir() / "renminbi.desktop";
 }
 
 bool GetStartOnSystemStartup()
@@ -557,7 +557,7 @@ bool SetStartOnSystemStartup(bool fAutoStart)
         // Write a bitcoin.desktop file to the autostart directory:
         optionFile << "[Desktop Entry]\n";
         optionFile << "Type=Application\n";
-        optionFile << "Name=VeriCoin\n";
+        optionFile << "Name=Renminbi\n";
         optionFile << "Exec=" << pszExePath << " -min\n";
         optionFile << "Terminal=false\n";
         optionFile << "Hidden=false\n";
@@ -578,10 +578,10 @@ bool SetStartOnSystemStartup(bool fAutoStart) { return false; }
 HelpMessageBox::HelpMessageBox(QWidget *parent) :
     QMessageBox(parent)
 {
-    header = tr("VeriCoin-Qt") + " " + tr("version") + " " +
+    header = tr("Renminbi-Qt") + " " + tr("version") + " " +
         QString::fromStdString(FormatFullVersion()) + "\n\n" +
         tr("Usage:") + "\n" +
-        "  vericoin-qt [" + tr("command-line options") + "]                     " + "\n";
+        "  renminbi-qt [" + tr("command-line options") + "]                     " + "\n";
 
     coreOptions = QString::fromStdString(HelpMessage());
 
@@ -590,7 +590,7 @@ HelpMessageBox::HelpMessageBox(QWidget *parent) :
         "  -min                   " + tr("Start minimized") + "\n" +
         "  -splash                " + tr("Show splash screen on startup (default: 1)") + "\n";
 
-    setWindowTitle(tr("VeriCoin-Qt"));
+    setWindowTitle(tr("Renminbi-Qt"));
     setTextFormat(Qt::PlainText);
     // setMinimumWidth is ignored for QMessageBox so put in non-breaking spaces to make it wider.
     setText(header + QString(QChar(0x2003)).repeated(50));

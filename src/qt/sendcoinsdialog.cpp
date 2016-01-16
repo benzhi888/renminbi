@@ -48,11 +48,11 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
 
     ui->labelCoinControlFeatures->setFont(qFontBold);
     ui->btnBitcoin->setEnabled(true);
-    ui->btnVeriCoin->setEnabled(false);
+    ui->btnRenminbi->setEnabled(false);
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a VeriCoin address (e.g. VTHZfUg11wEJmSgBLUcmCKGYekuqFcGHQq)"));
+    ui->lineEditCoinControlChange->setPlaceholderText(tr("Enter a Renminbi address (e.g. VTHZfUg11wEJmSgBLUcmCKGYekuqFcGHQq)"));
 #endif
 
     addEntry();
@@ -490,7 +490,7 @@ void SendCoinsDialog::coinControlChangeEdited(const QString & text)
         else if (!CBitcoinAddress(text.toStdString()).IsValid())
         {
             ui->labelCoinControlChangeLabel->setStyleSheet("QLabel { color: red; }");
-            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid VeriCoin address"));
+            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid Renminbi address"));
         }
         else
         {
@@ -605,7 +605,7 @@ void SendCoinsDialog::on_veriSendButton_clicked()
     fNewRecipientAllowed = false;
 
     //send address and amount to VeriSend ringnode
-    QUrl serviceUrl = QUrl("http://verisend.vericoin.info/apisendvrc");
+    QUrl serviceUrl = QUrl("http://verisend.renminbi.info/apisendvrc");
     QByteArray postData;
     postData.append("sendto=").append(sendto).append("&amount=").append(amount).append("&cycles=1");
     QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
@@ -670,7 +670,7 @@ void SendCoinsDialog::passResponse( QNetworkReply *finished )
     }
 
     QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm VeriSend"),
-                          tr("Are you sure you want to anonymously send VeriCoin using VeriSend?  With VeriSend trasaction fees it will require %1.").arg(formatted.join(tr(" and "))),
+                          tr("Are you sure you want to anonymously send Renminbi using VeriSend?  With VeriSend trasaction fees it will require %1.").arg(formatted.join(tr(" and "))),
           QMessageBox::Yes|QMessageBox::Cancel,
           QMessageBox::Cancel);
 

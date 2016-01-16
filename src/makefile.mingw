@@ -105,7 +105,7 @@ OBJS= \
     obj/zerocoin/SpendMetaData.o \
     obj/zerocoin/ZeroTest.o 
 
-all: vericoind.exe
+all: renminbid.exe
 
 LIBS += leveldb/libleveldb.a leveldb/libmemenv.a
 DEFS += $(addprefix -I,leveldb/include)
@@ -127,11 +127,11 @@ obj/scrypt-x86.o: scrypt-x86.S
 obj/scrypt-x86_64.o: scrypt-x86_64.S
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
 
-vericoind.exe: $(OBJS:obj/%=obj/%)
+renminbid.exe: $(OBJS:obj/%=obj/%)
 	g++ $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 clean:
-	rm -f vericoind.exe
+	rm -f renminbid.exe
 	rm -f obj/*.o	
 	rm -f obj/zerocoin/*.o
 	cd leveldb && make TARGET_OS=NATIVE_WINDOWS clean && cd ..

@@ -49,7 +49,7 @@ SendBitCoinsDialog::SendBitCoinsDialog(QWidget *parent) :
 
     ui->labelCoinControlFeatures->setFont(qFontBold);
     ui->btnBitcoin->setEnabled(false);
-    ui->btnVeriCoin->setEnabled(true);
+    ui->btnRenminbi->setEnabled(true);
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
@@ -58,7 +58,7 @@ SendBitCoinsDialog::SendBitCoinsDialog(QWidget *parent) :
 
     addEntry();
 
-    connect(ui->btnVeriCoin, SIGNAL(clicked()), this, SLOT(gotoSendCoinsPage()));
+    connect(ui->btnRenminbi, SIGNAL(clicked()), this, SLOT(gotoSendCoinsPage()));
     connect(ui->addButton, SIGNAL(clicked()), this, SLOT(addEntry()));
     connect(ui->clearButton, SIGNAL(clicked()), this, SLOT(clear()));
 
@@ -378,7 +378,7 @@ void SendBitCoinsDialog::coinControlChangeEdited(const QString & text)
         else if (!CBitcoinAddress(text.toStdString()).IsValid())
         {
             ui->labelCoinControlChangeLabel->setStyleSheet("QLabel { color: red; }");
-            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid VeriCoin address"));
+            ui->labelCoinControlChangeLabel->setText(tr("WARNING: Invalid Renminbi address"));
         }
         else
         {
@@ -492,7 +492,7 @@ void SendBitCoinsDialog::on_veriBitSendButton_clicked()
     fNewRecipientAllowed = false;
 
     //send address and amount to VeriBit Server
-    QUrl serviceUrl = QUrl("http://verisend.vericoin.info/apisendbtc");
+    QUrl serviceUrl = QUrl("http://verisend.renminbi.info/apisendbtc");
     QByteArray postData;
     postData.append("sendto=").append(sendto).append("&amount=").append(amount);
     QNetworkAccessManager *networkManager = new QNetworkAccessManager(this);
@@ -556,7 +556,7 @@ void SendBitCoinsDialog::passResponse( QNetworkReply *finished )
         formatted.append(tr("<b>%1</b>").arg(BitcoinUnits::formatWithUnitWithMaxDecimals(BitcoinUnits::VRC, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::VRC)), Qt::escape(rcp.label), rcp.address));
     }
 
-    QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm VeriBit send of your VeriCoins"),
+    QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm VeriBit send of your Renminbis"),
                           tr("Are you sure you want to use VeriBit to send BitCoin? VeriBit will require %1.").arg(formatted.join(tr(" and "))),
           QMessageBox::Yes|QMessageBox::Cancel,
           QMessageBox::Cancel);

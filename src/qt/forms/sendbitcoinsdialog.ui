@@ -20,9 +20,9 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
-      <widget class="QPushButton" name="btnVeriCoin">
+      <widget class="QPushButton" name="btnRenminbi">
        <property name="text">
-        <string>Send VeriCoin</string>
+        <string>Send Renminbi</string>
        </property>
       </widget>
      </item>
@@ -32,7 +32,7 @@
         <bool>false</bool>
        </property>
        <property name="text">
-        <string>Send VeriCoin to Bitcoin (VeriBit)</string>
+        <string>Send Renminbi to Bitcoin (VeriBit)</string>
        </property>
       </widget>
      </item>

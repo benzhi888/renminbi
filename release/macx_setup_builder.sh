@@ -11,23 +11,23 @@ else
     arch="32bit"
 fi
 
-if [ -f VeriCoin-Qt.app/Contents/MacOS/VeriCoin-Qt ] && [ -f vericoin.conf ] && [ -f README ]; then
-    echo "Building VeriCoin_${version}_${arch}.pkg ...\n"
-    cp vericoin.conf VeriCoin-Qt.app/Contents/MacOS/
-    cp README VeriCoin-Qt.app/Contents/MacOS/
+if [ -f Renminbi-Qt.app/Contents/MacOS/Renminbi-Qt ] && [ -f renminbi.conf ] && [ -f README ]; then
+    echo "Building Renminbi_${version}_${arch}.pkg ...\n"
+    cp renminbi.conf Renminbi-Qt.app/Contents/MacOS/
+    cp README Renminbi-Qt.app/Contents/MacOS/
 
     # Remove the old archive
-    if [ -f VeriCoin_${version}_${arch}.pkg ]; then
-        rm -f VeriCoin_${version}_${arch}.pkg
+    if [ -f Renminbi_${version}_${arch}.pkg ]; then
+        rm -f Renminbi_${version}_${arch}.pkg
     fi
 
     # Deploy the app, create the plist, then build the package.
-    macdeployqt ./VeriCoin-Qt.app -always-overwrite
-    pkgbuild --analyze --root ./VeriCoin-Qt.app share/qt/VeriCoin-Qt.plist
-    pkgbuild --root ./VeriCoin-Qt.app --component-plist share/qt/VeriCoin-Qt.plist --identifier org.vericoin.VeriCoin-Qt --install-location /Applications/VeriCoin-Qt.app VeriCoin_${version}_${arch}.pkg
-    echo "Package created in: $PWD/VeriCoin_${version}_${arch}.pkg\n"
+    macdeployqt ./Renminbi-Qt.app -always-overwrite
+    pkgbuild --analyze --root ./Renminbi-Qt.app share/qt/Renminbi-Qt.plist
+    pkgbuild --root ./Renminbi-Qt.app --component-plist share/qt/Renminbi-Qt.plist --identifier org.renminbi.Renminbi-Qt --install-location /Applications/Renminbi-Qt.app Renminbi_${version}_${arch}.pkg
+    echo "Package created in: $PWD/Renminbi_${version}_${arch}.pkg\n"
 else
     echo "Error: Missing files!\n"
-    echo "Run this script from the folder containing VeriCoin-Qt.app, vericoin.conf and README.\n"
+    echo "Run this script from the folder containing Renminbi-Qt.app, renminbi.conf and README.\n"
 fi
 

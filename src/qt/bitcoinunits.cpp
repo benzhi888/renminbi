@@ -49,9 +49,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case VRC: return QString("VeriCoins");
-    case mVRC: return QString("Milli-VeriCoins (1 / 1,000)");
-    case uVRC: return QString("Micro-VeriCoins (1 / 1,000,000)");
+    case VRC: return QString("Renminbis");
+    case mVRC: return QString("Milli-Renminbis (1 / 1,000)");
+    case uVRC: return QString("Micro-Renminbis (1 / 1,000,000)");
     default: return QString("???");
     }
 }

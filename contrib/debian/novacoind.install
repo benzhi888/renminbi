@@ -1,2 +1,2 @@
-debian/bin/vericoind usr/bin
-src/vericoind usr/lib/vericoin
+debian/bin/renminbid usr/bin
+src/renminbid usr/lib/renminbi

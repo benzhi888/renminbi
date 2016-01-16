@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = vericoin-qt
+TARGET = renminbi-qt
 VERSION = 1.6.2
 USE_QRCODE = 1
 INCLUDEPATH += src src/json src/qt
@@ -20,13 +20,13 @@ greaterThan(QT_MAJOR_VERSION, 4) {
 # Profiling on linux
 #   Download, build and install: libunwind and gperftools
 #   Include the profiler header "gperftools/profiler.h" in the code to profile
-#   Bracket the code to profile with ProfileStart("vericoin-qt.prof") and ProfileStop() and recompile
-#   Run vericoin-qt through its paces then exit
+#   Bracket the code to profile with ProfileStart("renminbi-qt.prof") and ProfileStop() and recompile
+#   Run renminbi-qt through its paces then exit
 #   Analyze with:
-#      pprof ./vericoin-qt vericoin-qt.prof
+#      pprof ./renminbi-qt renminbi-qt.prof
 #   For a graphical view you need to: sudo apt-get install graphviz gv
 #   Then run:
-#      pprof --gv ./vericoin-qt vericoin-qt.prof
+#      pprof --gv ./renminbi-qt renminbi-qt.prof
 PROFILE = 0
 !macx:!win32:contains(PROFILE, 1) {
 DEFINES += PROFILER
@@ -327,7 +327,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/qvaluecombobox.h \
     src/qt/askpassphrasedialog.h \
     src/qt/askpassphrasepage.h \
-    src/qt/getvericoinpage.h \
+    src/qt/getrenminbipage.h \
     src/qt/forumspage.h \
     src/qt/chatpage.h \
     src/qt/blockchainpage.h \
@@ -423,7 +423,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/rescandialog.cpp \
     src/qt/cookiejar.cpp \
     src/qt/autosaver.cpp \
-    src/qt/getvericoinpage.cpp \
+    src/qt/getrenminbipage.cpp \
     src/qt/forumspage.cpp \
     src/qt/chatpage.cpp \
     src/qt/blockchainpage.cpp \
@@ -467,7 +467,7 @@ FORMS += \
     src/qt/forms/editaddressdialog.ui \
     src/qt/forms/transactiondescdialog.ui \
     src/qt/forms/overviewpage.ui \
-    src/qt/forms/getvericoinpage.ui \
+    src/qt/forms/getrenminbipage.ui \
     src/qt/forms/sendcoinsentry.ui \
     src/qt/forms/sendbitcoinsentry.ui \
     src/qt/forms/askpassphrasedialog.ui \
@@ -564,8 +564,8 @@ macx:HEADERS += src/qt/macdockiconhandler.h
 macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = src/qt/res/icons/vericoin.icns
-macx:TARGET = "VeriCoin-Qt"
+macx:ICON = src/qt/res/icons/renminbi.icns
+macx:TARGET = "Renminbi-Qt"
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread

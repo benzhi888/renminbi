@@ -31,7 +31,7 @@ AccessNxtInsideDialog::AccessNxtInsideDialog(QWidget *parent) :
 
 #if (QT_VERSION >= 0x040700)
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
-    ui->addressIn_AN->setPlaceholderText(tr("Enter a VeriCoin address (e.g. VTHZfUg11wEJmSgBLUcmCKGYekuqFcGHQq)"));
+    ui->addressIn_AN->setPlaceholderText(tr("Enter a Renminbi address (e.g. VTHZfUg11wEJmSgBLUcmCKGYekuqFcGHQq)"));
 #endif
 
     GUIUtil::setupAddressWidget(ui->addressIn_AN, this);

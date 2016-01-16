@@ -31,12 +31,12 @@
 #include "notificator.h"
 #include "guiutil.h"
 #include "rpcconsole.h"
-#include "getvericoinpage.h"
+#include "getrenminbipage.h"
 #include "forumspage.h"
 #include "chatpage.h"
 #include "blockchainpage.h"
 #include "supernetpage.h"
-#include "ui_getvericoinpage.h"
+#include "ui_getrenminbipage.h"
 #include "ui_forumspage.h"
 #include "ui_chatpage.h"
 #include "ui_blockchainpage.h"
@@ -129,7 +129,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     GUIUtil::setFontPixelSizes();
     qApp->setFont(qFont);
 
-    setWindowTitle(tr("VeriCoin Wallet"));
+    setWindowTitle(tr("Renminbi Wallet"));
     setWindowIcon(QIcon(":icons/bitcoin"));
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
 
@@ -192,8 +192,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Create VeriBit Page
     sendBitCoinsPage = new SendBitCoinsDialog(this);
 
-    // Create GetVeriCoin Page
-    getVeriCoinPage = new GetVeriCoinPage();
+    // Create GetRenminbi Page
+    getRenminbiPage = new GetRenminbiPage();
 
     // Create Forums Page
     forumsPage = new ForumsPage();
@@ -231,7 +231,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget->addWidget(receiveCoinsPage);
     centralWidget->addWidget(sendCoinsPage);
     centralWidget->addWidget(sendBitCoinsPage);
-    centralWidget->addWidget(getVeriCoinPage);
+    centralWidget->addWidget(getRenminbiPage);
     centralWidget->addWidget(forumsPage);
     centralWidget->addWidget(chatPage);
     centralWidget->addWidget(blockchainPage);
@@ -414,7 +414,7 @@ void BitcoinGUI::lockWalletFeatures(bool lock)
     {
         gotoOverviewPage();
 
-        QSettings settings("VeriCoin", "VeriCoin-Qt");
+        QSettings settings("Renminbi", "Renminbi-Qt");
         restoreGeometry(settings.value("geometry").toByteArray());
         restoreState(settings.value("windowState").toByteArray());
 
@@ -443,7 +443,7 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(overviewAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("Send"), this);
-    sendCoinsAction->setToolTip(tr("Send VeriCoin"));
+    sendCoinsAction->setToolTip(tr("Send Renminbi"));
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
     tabGroup->addAction(sendCoinsAction);
@@ -476,26 +476,26 @@ void BitcoinGUI::createActions()
     tabGroup->addAction(addressBookAction);
     */
 
-    getVeriCoinAction = new QAction(QIcon(":/icons/getvericoin"), tr("Get VeriCoin"), this);
-    getVeriCoinAction->setToolTip(tr("Buy VeriCoin with Fiat or Bitcoin"));
-    getVeriCoinAction->setCheckable(true);
-    getVeriCoinAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
-    tabGroup->addAction(getVeriCoinAction);
+    getRenminbiAction = new QAction(QIcon(":/icons/getrenminbi"), tr("Get Renminbi"), this);
+    getRenminbiAction->setToolTip(tr("Buy Renminbi with Fiat or Bitcoin"));
+    getRenminbiAction->setCheckable(true);
+    getRenminbiAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+    tabGroup->addAction(getRenminbiAction);
 
     forumsAction = new QAction(QIcon(":/icons/forums"), tr("Forums"), this);
-    forumsAction->setToolTip(tr("Join the VeriCoin Community\nGet the Latest News"));
+    forumsAction->setToolTip(tr("Join the Renminbi Community\nGet the Latest News"));
     forumsAction->setCheckable(true);
     forumsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
     tabGroup->addAction(forumsAction);
 
     chatAction = new QAction(QIcon(":/icons/chat"), tr("Chat"), this);
-    chatAction->setToolTip(tr("Join the VeriCoin Chat Room"));
+    chatAction->setToolTip(tr("Join the Renminbi Chat Room"));
     chatAction->setCheckable(true);
     chatAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_8));
     tabGroup->addAction(chatAction);
 
     blockchainAction = new QAction(QIcon(":/icons/blockchain"), tr("BlockChain"), this);
-    blockchainAction->setToolTip(tr("Explore the VeriCoin Blockchain"));
+    blockchainAction->setToolTip(tr("Explore the Renminbi Blockchain"));
     blockchainAction->setCheckable(true);
     blockchainAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_9));
     tabGroup->addAction(blockchainAction);
@@ -518,8 +518,8 @@ void BitcoinGUI::createActions()
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
     //connect(addressBookAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     //connect(addressBookAction, SIGNAL(triggered()), this, SLOT(gotoAddressBookPage()));
-    connect(getVeriCoinAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(getVeriCoinAction, SIGNAL(triggered()), this, SLOT(gotoGetVeriCoinPage()));
+    connect(getRenminbiAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(getRenminbiAction, SIGNAL(triggered()), this, SLOT(gotoGetRenminbiPage()));
     connect(forumsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(forumsAction, SIGNAL(triggered()), this, SLOT(gotoForumsPage()));
     connect(chatAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -536,8 +536,8 @@ void BitcoinGUI::createActions()
     logoutAction = new QAction(QIcon(":/icons/logout"), tr("&Logout"), this);
     logoutAction->setToolTip(tr("Logout and Stop Staking"));
     logoutAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_L));
-    aboutAction = new QAction(QIcon(":/icons/about"), tr("&About VeriCoin"), this);
-    aboutAction->setToolTip(tr("Show information about VeriCoin"));
+    aboutAction = new QAction(QIcon(":/icons/about"), tr("&About Renminbi"), this);
+    aboutAction->setToolTip(tr("Show information about Renminbi"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutPostAction = new QAction(QIcon(":/icons/PoSTicon"), tr("&About PoST"), this);
     aboutPostAction->setToolTip(tr("Show information about PoST protocol"));
@@ -546,7 +546,7 @@ void BitcoinGUI::createActions()
     aboutQtAction->setToolTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options"), this);
-    optionsAction->setToolTip(tr("Modify configuration options for VeriCoin"));
+    optionsAction->setToolTip(tr("Modify configuration options for Renminbi"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     toggleHideAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Show / Hide"), this);
     backupWalletAction = new QAction(QIcon(":/icons/filesave"), tr("&Backup Wallet"), this);
@@ -569,10 +569,10 @@ void BitcoinGUI::createActions()
     //accessNxtInsideAction = new QAction(QIcon(":/icons/supernet"), tr("Enter &SuperNET"), this);
     checkForUpdateAction = new QAction(QIcon(":/icons/update"), tr("Check For &Update"), this);
     checkForUpdateAction->setToolTip(tr("Check for a new version of the wallet and update."));
-    forumAction = new QAction(QIcon(":/icons/bitcoin"), tr("VeriCoin &Forums"), this);
-    forumAction->setToolTip(tr("Go to the VeriCoin forums."));
-    webAction = new QAction(QIcon(":/icons/site"), tr("www.vericoin.info"), this);
-    webAction->setToolTip(tr("Go to VeriCoin website."));
+    forumAction = new QAction(QIcon(":/icons/bitcoin"), tr("Renminbi &Forums"), this);
+    forumAction->setToolTip(tr("Go to the Renminbi forums."));
+    webAction = new QAction(QIcon(":/icons/site"), tr("www.renminbi.info"), this);
+    webAction->setToolTip(tr("Go to Renminbi website."));
 
     exportAction = new QAction(QIcon(":/icons/export"), tr("&Export Data"), this);
     exportAction->setToolTip(tr("Export the data in the current tab to a file"));
@@ -675,7 +675,7 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(historyAction);
     //toolbar->addAction(addressBookAction);
     //toolbar->addAction(sendBitCoinsAction);
-    toolbar->addAction(getVeriCoinAction);
+    toolbar->addAction(getRenminbiAction);
     toolbar->addAction(forumsAction);
     toolbar->addAction(chatAction);
     toolbar->addAction(blockchainAction);
@@ -699,7 +699,7 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
 #endif
             if(trayIcon)
             {
-                trayIcon->setToolTip(tr("VeriCoin Wallet") + QString(" ") + tr("[testnet]"));
+                trayIcon->setToolTip(tr("Renminbi Wallet") + QString(" ") + tr("[testnet]"));
                 trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
                 toggleHideAction->setIcon(QIcon(":/icons/toolbar_testnet"));
             }
@@ -742,7 +742,7 @@ void BitcoinGUI::setWalletModel(WalletModel *walletModel)
         transactionView->setModel(walletModel);
         addressBookPage->setModel(walletModel->getAddressTableModel());
         sendBitCoinsPage->setModel(walletModel);
-        getVeriCoinPage->setModel(walletModel);
+        getRenminbiPage->setModel(walletModel);
         forumsPage->setModel(walletModel);
         chatPage->setModel(walletModel);
         blockchainPage->setModel(walletModel);
@@ -776,7 +776,7 @@ void BitcoinGUI::createTrayIcon()
     trayIcon = new QSystemTrayIcon(this);
     trayIconMenu = new QMenu(this);
     trayIcon->setContextMenu(trayIconMenu);
-    trayIcon->setToolTip(tr("VeriCoin Wallet"));
+    trayIcon->setToolTip(tr("Renminbi Wallet"));
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
@@ -904,7 +904,7 @@ void BitcoinGUI::setNumConnections(int count)
     QString connectionlabel = connections + label;
     connectionsLabel->setText(QString(connectionlabel));
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(72,STATUSBAR_ICONSIZE));
-    labelConnectionsIcon->setToolTip(tr("%1 active connection%2 to the VeriCoin network").arg(count).arg(count == 1 ? "" : "s"));
+    labelConnectionsIcon->setToolTip(tr("%1 active connection%2 to the Renminbi network").arg(count).arg(count == 1 ? "" : "s"));
 }
 
 void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
@@ -1057,7 +1057,7 @@ void BitcoinGUI::changeEvent(QEvent *e)
 
 void BitcoinGUI::exitApp()
 {
-    QSettings settings("VeriCoin", "VeriCoin-Qt");
+    QSettings settings("Renminbi", "Renminbi-Qt");
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
 
@@ -1236,10 +1236,10 @@ void BitcoinGUI::gotoSendBitCoinsPage()
     */
 }
 
-void BitcoinGUI::gotoGetVeriCoinPage()
+void BitcoinGUI::gotoGetRenminbiPage()
 {
-    getVeriCoinAction->setChecked(true);
-    centralWidget->setCurrentWidget(getVeriCoinPage);
+    getRenminbiAction->setChecked(true);
+    centralWidget->setCurrentWidget(getRenminbiPage);
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -1360,7 +1360,7 @@ void BitcoinGUI::dropEvent(QDropEvent *event)
         else if (nValidUrisFoundBit)
             gotoSendBitCoinsPage();
         else
-            notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid VeriCoin address or malformed URI parameters."));
+            notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid Renminbi address or malformed URI parameters."));
     }
 
     event->acceptProposedAction();
@@ -1380,7 +1380,7 @@ void BitcoinGUI::handleURI(QString strURI)
         gotoSendBitCoinsPage();
     }
     else
-        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid VeriCoin address or malformed URI parameters."));
+        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid Renminbi address or malformed URI parameters."));
 }
 
 void BitcoinGUI::setEncryptionStatus(int status)
@@ -1764,7 +1764,7 @@ void BitcoinGUI::checkForUpdate()
 
         checkForUpdateActionEnabled(false); // Sets back to true when dialog closes.
 
-        std::string basename = GetArg("-vFileName","vericoin-qt");
+        std::string basename = GetArg("-vFileName","renminbi-qt");
         fileName = fileName / basename.c_str();
         url.setUrl(QString(walletDownloadsUrl).append(basename.c_str()));
 

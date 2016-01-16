@@ -1,4 +1,4 @@
-// Copyright (c) 2013 VeriCoin Developers
+// Copyright (c) 2013 Renminbi Developers
 
 #include <string.h>
 #include "pbkdf2.h"

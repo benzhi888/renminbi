@@ -8,7 +8,7 @@
 #include <QTimer>
 
 namespace Ui {
-    class GetVeriCoinPage;
+    class GetRenminbiPage;
 }
 class ClientModel;
 class WalletModel;
@@ -18,13 +18,13 @@ class QModelIndex;
 QT_END_NAMESPACE
 
 /** Trade page widget */
-class GetVeriCoinPage : public QWidget
+class GetRenminbiPage : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit GetVeriCoinPage(QWidget *parent = 0);
-    ~GetVeriCoinPage();
+    explicit GetRenminbiPage(QWidget *parent = 0);
+    ~GetRenminbiPage();
 
     void setModel(ClientModel *clientModel);
     void setModel(WalletModel *walletModel);
@@ -34,7 +34,7 @@ public slots:
 // signals:
 
 private:
-    Ui::GetVeriCoinPage *ui;
+    Ui::GetRenminbiPage *ui;
     ClientModel *clientModel;
     WalletModel *walletModel;
 

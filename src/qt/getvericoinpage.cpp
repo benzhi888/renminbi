@@ -1,5 +1,5 @@
-#include "getvericoinpage.h"
-#include "ui_getvericoinpage.h"
+#include "getrenminbipage.h"
+#include "ui_getrenminbipage.h"
 
 #include "clientmodel.h"
 #include "walletmodel.h"
@@ -11,9 +11,9 @@
 
 using namespace GUIUtil;
 
-GetVeriCoinPage::GetVeriCoinPage(QWidget *parent) :
+GetRenminbiPage::GetRenminbiPage(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::GetVeriCoinPage),
+    ui(new Ui::GetRenminbiPage),
     walletModel(0)
 {
     ui->setupUi(this);
@@ -22,13 +22,13 @@ GetVeriCoinPage::GetVeriCoinPage(QWidget *parent) :
     if (fNoHeaders)
         GUIUtil::header(this, QString(""));
     else if (fSmallHeaders)
-        GUIUtil::header(this, QString(":images/headerGetVeriCoinSmall"));
+        GUIUtil::header(this, QString(":images/headerGetRenminbiSmall"));
     else
-        GUIUtil::header(this, QString(":images/headerGetVeriCoin"));
+        GUIUtil::header(this, QString(":images/headerGetRenminbi"));
     this->layout()->setContentsMargins(0, HEADER_HEIGHT, 0, 0);
 
-    CookieJar *getVeriCoinJar = new CookieJar;
-    ui->webView->page()->networkAccessManager()->setCookieJar(getVeriCoinJar);
+    CookieJar *getRenminbiJar = new CookieJar;
+    ui->webView->page()->networkAccessManager()->setCookieJar(getRenminbiJar);
 
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAsNeeded);
     ui->webView->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
@@ -47,15 +47,15 @@ GetVeriCoinPage::GetVeriCoinPage(QWidget *parent) :
     connect(ui->reload, SIGNAL(clicked()), ui->webView, SLOT(myReload()));
 }
 
-GetVeriCoinPage::~GetVeriCoinPage()
+GetRenminbiPage::~GetRenminbiPage()
 {
     delete ui;
 }
 
-void GetVeriCoinPage::setModel(WalletModel *model)
+void GetRenminbiPage::setModel(WalletModel *model)
 {
     this->walletModel = model;
 
-    QUrl url(QString(walletUrl).append("wallet/getvericoin.php"));
+    QUrl url(QString(walletUrl).append("wallet/getrenminbi.php"));
     ui->webView->myOpenUrl(url);
 }
