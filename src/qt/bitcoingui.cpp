@@ -675,11 +675,11 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(historyAction);
     //toolbar->addAction(addressBookAction);
     //toolbar->addAction(sendBitCoinsAction);
-    toolbar->addAction(getRenminbiAction);
-    toolbar->addAction(forumsAction);
-    toolbar->addAction(chatAction);
-    toolbar->addAction(blockchainAction);
-    toolbar->addAction(superNETAction);
+    //toolbar->addAction(getRenminbiAction);
+    //toolbar->addAction(forumsAction);
+    //toolbar->addAction(chatAction);
+    //toolbar->addAction(blockchainAction);
+    //toolbar->addAction(superNETAction);
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)

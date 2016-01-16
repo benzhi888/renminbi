@@ -47,25 +47,25 @@ static boost::filesystem::detail::utf8_codecvt_facet utf8;
 
 namespace GUIUtil {
 
-bool fTicker = true;
-bool fNoHeaders = false;
+bool fTicker = false;
+bool fNoHeaders = true;
 bool fSmallHeaders = false;
 int TOOLBAR_WIDTH = 120;
 int TOOLBAR_ICON_WIDTH = TOOLBAR_WIDTH;
 int TOOLBAR_ICON_HEIGHT = 48;
 int HEADER_WIDTH = 1024;
-int HEADER_HEIGHT = 160;
+int HEADER_HEIGHT = 0;
 int BUTTON_WIDTH = 140;
 int BUTTON_HEIGHT = 27;
 int FRAMEBLOCKS_LABEL_WIDTH = 100;
 int WINDOW_MIN_WIDTH = TOOLBAR_WIDTH + HEADER_WIDTH;
 #ifdef Q_OS_WIN
-int WINDOW_MIN_HEIGHT = 768;
+int WINDOW_MIN_HEIGHT = 468;
 #else
 #ifdef Q_OS_MAC
-int WINDOW_MIN_HEIGHT = 748;
+int WINDOW_MIN_HEIGHT = 448;
 #else
-int WINDOW_MIN_HEIGHT = 772;
+int WINDOW_MIN_HEIGHT = 472;
 #endif
 #endif
 int STATUSBAR_ICONSIZE = 16;
@@ -76,12 +76,12 @@ void refactorGUI(QRect screenSize)
 {
     // Set the new geometry
 #ifdef Q_OS_WIN
-    int newHeight = screenSize.height() - 40;
+    int newHeight = 468;
 #else
 #ifdef Q_OS_MAC
-    int newHeight = screenSize.height() - 30;
+    int newHeight = 448;
 #else
-    int newHeight = screenSize.height() - 25;
+    int newHeight = 472;
 #endif
 #endif
     int newWidth = WINDOW_MIN_WIDTH;
@@ -103,15 +103,16 @@ void refactorGUI(QRect screenSize)
     else if (screenSize.height() < 728) // 728px if OS taskbar is not hidden
     {
         TOOLBAR_ICON_HEIGHT = 32;
-        HEADER_HEIGHT = 32;
+        HEADER_HEIGHT = 0;
         fNoHeaders = true;
         fTicker = false;
     }
     else // Default small wallet at 728px to 768px
     {
         TOOLBAR_ICON_HEIGHT = 34;
-        HEADER_HEIGHT = 85;
-        fSmallHeaders = true;
+        HEADER_HEIGHT = 0;
+        fNoHeaders = true;
+        fTicker = false;
     }
 
     WINDOW_MIN_WIDTH = TOOLBAR_WIDTH + HEADER_WIDTH;

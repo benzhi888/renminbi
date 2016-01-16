@@ -150,7 +150,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
     ui->labelUnconfirmedText->setText("<html><img src=':icons/unconfirmed' width=16 height=16 border=0 align='bottom'> Unconfirmed:</html>");
     ui->labelTotalText->setText("<html><img src=':icons/total' width=16 height=16 border=0 align='bottom'> Total:</html>");
 
-    CookieJar *statsJar = new CookieJar;
+    /*CookieJar *statsJar = new CookieJar;
     ui->stats->page()->networkAccessManager()->setCookieJar(statsJar);
     ui->stats->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
     connect(ui->stats->page(), SIGNAL(linkClicked(QUrl)), this, SLOT(myOpenUrl(QUrl)));
@@ -168,7 +168,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
     ui->ticker->page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
     connect(ui->ticker->page(), SIGNAL(linkClicked(QUrl)), this, SLOT(myOpenUrl(QUrl)));
     connect(ui->ticker->page()->networkAccessManager(), SIGNAL(sslErrors(QNetworkReply*, const QList<QSslError> & )), this, SLOT(sslErrorHandler(QNetworkReply*, const QList<QSslError> & )));
-
+    */
     // Recent transactionsBalances
     ui->listTransactions->setItemDelegate(txdelegate);
     ui->listTransactions->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
@@ -270,12 +270,12 @@ void OverviewPage::setModel(WalletModel *model)
         connect(model->getOptionsModel(), SIGNAL(decimalPointsChanged(int)), this, SLOT(updateDecimalPoints()));
         connect(model->getOptionsModel(), SIGNAL(hideAmountsChanged(bool)), this, SLOT(updateHideAmounts()));
     }
-    QUrl statsUrl(QString(walletUrl).append("wallet/stats.php"));
-    QUrl valueUrl(QString(walletUrl).append("wallet/chart.php"));
-    QUrl tickerUrl(QString(walletUrl).append("wallet/ticker.php"));
-    ui->stats->load(statsUrl);
-    ui->value->load(valueUrl);
-    ui->ticker->load(tickerUrl);
+    //QUrl statsUrl(QString(walletUrl).append("wallet/stats.php"));
+    //QUrl valueUrl(QString(walletUrl).append("wallet/chart.php"));
+    //QUrl tickerUrl(QString(walletUrl).append("wallet/ticker.php"));
+    //ui->stats->load(statsUrl);
+    //ui->value->load(valueUrl);
+    //ui->ticker->load(tickerUrl);
 
     // update the display unit, to not use the default ("VRC")
     updateDisplayUnit();
