@@ -26,8 +26,8 @@ class CInv;
 class CRequestTracker;
 class CNode;
 
-static const int LAST_POW_BLOCK = 20160;             // If you change this, or mining rewards, adjust INITIAL_COIN_SUPPLY
-static const int64_t INITIAL_COIN_SUPPLY = 26751452; // Used in calculating interest rate
+static const int LAST_POW_BLOCK = 2000;             // If you change this, or mining rewards, adjust INITIAL_COIN_SUPPLY
+static const int64_t INITIAL_COIN_SUPPLY = 10000000; // Used in calculating interest rate
 
 static const unsigned int MAX_BLOCK_SIZE = 1000000;
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
@@ -39,7 +39,7 @@ static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
 static const int64_t MAX_MONEY = 2000000000 * COIN;
 static const double PI = 3.1415926535;
 
-inline bool PoSTprotocol(int nHeight) { return nHeight > 608100; }
+inline bool PoSTprotocol(int nHeight) { return nHeight > 0; }
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC

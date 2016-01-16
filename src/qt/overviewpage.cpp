@@ -127,13 +127,13 @@ OverviewPage::OverviewPage(QWidget *parent) :
         ui->formLayout_4->layout()->setContentsMargins(10, 10, 0, 0);
         ui->gridLayout_3->layout()->setContentsMargins(0, 10, 10, 0);
         ui->gridLayout_4->layout()->setContentsMargins(0, 0, 10, 0);
-        ui->formLayout_6->layout()->setContentsMargins(10, 0, 0, 0);
+       // ui->formLayout_6->layout()->setContentsMargins(10, 0, 0, 0);
     }
 
     ui->labelBalance->setFont(qFontLargerBold);
     ui->labelTransactions->setFont(qFontLargerBold);
-    ui->labelNetwork->setFont(qFontLargerBold);
-    ui->labelValue->setFont(qFontLargerBold);
+    //ui->labelNetwork->setFont(qFontLargerBold);
+    //ui->labelValue->setFont(qFontLargerBold);
 
     ui->labelSpendableText->setFont(qFont);
     ui->labelSpendable->setFont(qFont);
@@ -257,7 +257,7 @@ void OverviewPage::setModel(WalletModel *model)
         ui->listTransactions->setModel(filter);
         ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
 
-        ui->ticker->setVisible(fTicker);
+       // ui->ticker->setVisible(fTicker);
 
         // Keep up to date with wallet
         setBalance(model->getBalance(), model->getStake(), model->getUnconfirmedBalance(), model->getImmatureBalance());

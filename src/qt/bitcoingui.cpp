@@ -96,7 +96,7 @@ extern int64_t nLastCoinStakeSearchInterval;
 extern unsigned int nTargetSpacing;
 double GetPoSKernelPS();
 bool blocksIcon = true;
-bool resizeGUICalled = false;
+bool resizeGUICalled = true;
 
 
 BitcoinGUI::BitcoinGUI(QWidget *parent):
@@ -129,7 +129,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     GUIUtil::setFontPixelSizes();
     qApp->setFont(qFont);
 
-    setWindowTitle(tr("Renminbi Wallet"));
+    setWindowTitle(tr("Renminbi"));
     setWindowIcon(QIcon(":icons/bitcoin"));
     qApp->setWindowIcon(QIcon(":icons/bitcoin"));
 
@@ -230,12 +230,12 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     //centralWidget->addWidget(addressBookPage);
     centralWidget->addWidget(receiveCoinsPage);
     centralWidget->addWidget(sendCoinsPage);
-    centralWidget->addWidget(sendBitCoinsPage);
-    centralWidget->addWidget(getRenminbiPage);
-    centralWidget->addWidget(forumsPage);
-    centralWidget->addWidget(chatPage);
-    centralWidget->addWidget(blockchainPage);
-    centralWidget->addWidget(superNETPage);
+    //centralWidget->addWidget(sendBitCoinsPage);
+    //centralWidget->addWidget(getRenminbiPage);
+    //centralWidget->addWidget(forumsPage);
+    //centralWidget->addWidget(chatPage);
+    //centralWidget->addWidget(blockchainPage);
+    //centralWidget->addWidget(superNETPage);
     setCentralWidget(centralWidget);
 
     // Create status bar
@@ -623,7 +623,7 @@ void BitcoinGUI::createMenuBar()
     file->addAction(backupWalletAction);
     file->addAction(exportAction);
     file->addAction(rescanWalletAction);
-    file->addAction(reloadBlockchainAction);
+    //file->addAction(reloadBlockchainAction);
     file->addSeparator();
     file->addAction(addressBookAction);
     file->addAction(signMessageAction);
@@ -647,8 +647,8 @@ void BitcoinGUI::createMenuBar()
     help->setFont(qFont);
     help->addAction(openRPCConsoleAction);
     help->addSeparator();
-    help->addAction(webAction);
-    help->addAction(checkForUpdateAction);
+    //help->addAction(webAction);
+    //help->addAction(checkForUpdateAction);
     help->addSeparator();
     help->addAction(aboutAction);
     help->addAction(aboutPostAction);

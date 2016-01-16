@@ -43,10 +43,10 @@ CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 
 unsigned int nTargetSpacing = 1 * 60; // 1 minute
-unsigned int nStakeMinAge = 8 * 60 * 60; // 8 hours
+unsigned int nStakeMinAge = 4 * 60 * 60; // 8 hours
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
 
-int nCoinbaseMaturity = 500;
+int nCoinbaseMaturity = 240;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 
@@ -1227,11 +1227,6 @@ static unsigned int GetNextTargetRequiredVRM(const CBlockIndex* pindexLast, bool
 
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
-    if (pindexLast->nHeight < 38424)
-        return GetNextTargetRequiredV1(pindexLast, fProofOfStake);
-    else if (fTestNet)
-        return GetNextTargetRequiredV2(pindexLast, fProofOfStake);
-    else
         return GetNextTargetRequiredV2(pindexLast, fProofOfStake);
 }
 
@@ -1693,17 +1688,9 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             nSigOps += tx.GetP2SHSigOpCount(mapInputs);
             if (nSigOps > MAX_BLOCK_SIGOPS)
                 return DoS(100, error("ConnectBlock() : too many sigops"));
-
             int64_t nTxValueIn = tx.GetValueIn(mapInputs);
             int64_t nTxValueOut = tx.GetValueOut();
-            int currentHeight = pindex->pprev->nHeight+1;
-            if (tx.IsCoinStake() && currentHeight < 299000 && !fTestNet)
-            {
-                double nNetworkDriftBuffer = nTxValueOut*.02;
-                nTxValueOut = nTxValueOut-nNetworkDriftBuffer;
-                nStakeReward = nTxValueOut - nTxValueIn;
-            }
-            if ((tx.IsCoinStake() && currentHeight >= 299000) || (tx.IsCoinStake() && fTestNet))
+            if (tx.IsCoinStake())
             {
                 nStakeReward = nTxValueOut - nTxValueIn;
             }
