@@ -29,7 +29,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::VRC)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::RMB)
     {
 
     }
@@ -277,7 +277,7 @@ void OverviewPage::setModel(WalletModel *model)
     //ui->value->load(valueUrl);
     //ui->ticker->load(tickerUrl);
 
-    // update the display unit, to not use the default ("VRC")
+    // update the display unit, to not use the default ("RMB")
     updateDisplayUnit();
 }
 

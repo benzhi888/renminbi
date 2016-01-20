@@ -43,7 +43,7 @@ CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 CBigNum bnProofOfWorkLimitTestNet(~uint256(0) >> 16);
 
 unsigned int nTargetSpacing = 1 * 60; // 1 minute
-unsigned int nStakeMinAge = 4 * 60 * 60; // 8 hours
+unsigned int nStakeMinAge = 4 * 60 * 60; // 4 hours
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
 
 int nCoinbaseMaturity = 240;
@@ -958,11 +958,11 @@ int64_t GetProofOfWorkReward(int64_t nFees)
     int64_t nSubsidy;
     if (fTestNet)
     {
-        nSubsidy = 100000 * COIN;
+        nSubsidy = 10000 * COIN;
     }
     else
     {
-        nSubsidy = 2500 * COIN;
+        nSubsidy = 10000 * COIN;
     }
 
     if (fDebug && GetBoolArg("-printcreation"))
@@ -2766,7 +2766,7 @@ bool LoadBlockIndex(bool fAllowNew)
 
         const char* pszTimestamp = "9 May 2014 US politicians can accept bitcoin donations";
         CTransaction txNew;
-        txNew.nTime = 1399690945;
+        txNew.nTime = 1453248384;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -2776,13 +2776,46 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1399690945;
+        block.nTime    = 1453248384;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = !fTestNet ? 612416 : 712750;
+        block.nNonce   = !fTestNet ? 1088934 : 1088934;
 
-        //// debug print
-        assert(block.hashMerkleRoot == uint256("0x60424046d38de827de0ed1a20a351aa7f3557e3e1d3df6bfb34a94bc6161ec68"));
+        /// debug print
+        printf("%s\n", block.GetHash().ToString().c_str());
+        printf("%s\n", hashGenesisBlock.ToString().c_str());
+        printf("%s\n", block.hashMerkleRoot.ToString().c_str());
+        assert(block.hashMerkleRoot == uint256("0x5a575f3338cdb50c75c2340d4aa5eed1f07f6763f965005d7fb45b029304e12c"));
         block.print();
+
+        // If genesis block hash does not match, then generate new genesis hash.
+        if (block.GetHash() != hashGenesisBlock)
+        {
+            printf("Searching for genesis block...\n");
+            // This will figure out a valid hash and Nonce if you're
+            // creating a different genesis block:
+            uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();
+            uint256 thash;
+
+            while(true)
+            {
+                thash = scrypt_blockhash(BEGIN(block.nVersion));
+                if (thash <= hashTarget)
+                    break;
+                if ((block.nNonce & 0xFFF) == 0)
+                {
+                    printf("nonce %08X: hash = %s (target = %s)\n", block.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
+                }
+                ++block.nNonce;
+                if (block.nNonce == 0)
+                {
+                    printf("NONCE WRAPPED, incrementing time\n");
+                    ++block.nTime;
+                }
+            }
+            printf("block.nTime = %u \n", block.nTime);
+            printf("block.nNonce = %u \n", block.nNonce);
+            printf("block.GetHash = %s\n", block.GetHash().ToString().c_str());
+        }
 
         assert(block.GetHash() == (!fTestNet ? hashGenesisBlock : hashGenesisBlockTestNet));
         assert(block.CheckBlock());

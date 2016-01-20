@@ -990,8 +990,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+80"/>
         <location line="+86"/>
         <location line="+38"/>
-        <source>0.00 VRC</source>
-        <translation type="unfinished">123.456 VRC {0.00 ?}</translation>
+        <source>0.00 RMB</source>
+        <translation type="unfinished">123.456 RMB {0.00 ?}</translation>
     </message>
     <message>
         <location line="+131"/>
@@ -1711,8 +1711,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+86"/>
         <location line="+86"/>
         <location line="+32"/>
-        <source>0.00 VRC</source>
-        <translation type="unfinished">123.456 VRC {0.00 ?}</translation>
+        <source>0.00 RMB</source>
+        <translation type="unfinished">123.456 RMB {0.00 ?}</translation>
     </message>
     <message>
         <location line="-191"/>
@@ -1776,8 +1776,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+16"/>
-        <source>123.456 VRC</source>
-        <translation>123.456 VRC</translation>
+        <source>123.456 RMB</source>
+        <translation>123.456 RMB</translation>
     </message>
     <message>
         <location line="+31"/>

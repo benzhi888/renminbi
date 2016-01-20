@@ -15,9 +15,9 @@ BitcoinUnits::BitcoinUnits(QObject *parent, WalletModel *wModel):
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(VRC);
-    unitlist.append(mVRC);
-    unitlist.append(uVRC);
+    unitlist.append(RMB);
+    unitlist.append(mRMB);
+    unitlist.append(uRMB);
     return unitlist;
 }
 
@@ -25,9 +25,9 @@ bool BitcoinUnits::valid(int unit)
 {
     switch(unit)
     {
-    case VRC:
-    case mVRC:
-    case uVRC:
+    case RMB:
+    case mRMB:
+    case uRMB:
         return true;
     default:
         return false;
@@ -38,9 +38,9 @@ QString BitcoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case VRC: return QString("VRC");
-    case mVRC: return QString("mVRC");
-    case uVRC: return QString::fromUtf8("μVRC");
+    case RMB: return QString("RMB");
+    case mRMB: return QString("mRMB");
+    case uRMB: return QString::fromUtf8("μRMB");
     default: return QString("???");
     }
 }
@@ -49,9 +49,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case VRC: return QString("Renminbis");
-    case mVRC: return QString("Milli-Renminbis (1 / 1,000)");
-    case uVRC: return QString("Micro-Renminbis (1 / 1,000,000)");
+    case RMB: return QString("Renminbis");
+    case mRMB: return QString("Milli-Renminbis (1 / 1,000)");
+    case uRMB: return QString("Micro-Renminbis (1 / 1,000,000)");
     default: return QString("???");
     }
 }
@@ -60,9 +60,9 @@ qint64 BitcoinUnits::factor(int unit)
 {
     switch(unit)
     {
-    case VRC:  return 100000000;
-    case mVRC: return 100000;
-    case uVRC: return 100;
+    case RMB:  return 100000000;
+    case mRMB: return 100000;
+    case uRMB: return 100;
     default:   return 100000000;
     }
 }
@@ -71,9 +71,9 @@ int BitcoinUnits::amountDigits(int unit)
 {
     switch(unit)
     {
-    case VRC: return 8; // 21,000,000 (# digits, without commas)
-    case mVRC: return 11; // 21,000,000,000
-    case uVRC: return 14; // 21,000,000,000,000
+    case RMB: return 8; // 21,000,000 (# digits, without commas)
+    case mRMB: return 11; // 21,000,000,000
+    case uRMB: return 14; // 21,000,000,000,000
     default: return 0;
     }
 }
@@ -82,9 +82,9 @@ int BitcoinUnits::maxdecimals(int unit)
 {
     switch(unit)
     {
-        case VRC: return 8;
-        case mVRC: return 5;
-        case uVRC: return 2;
+        case RMB: return 8;
+        case mRMB: return 5;
+        case uRMB: return 2;
         default: return 0;
     }
 }

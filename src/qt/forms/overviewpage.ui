@@ -283,7 +283,7 @@
              <string notr="true">QLabel {color: #444748}</string>
             </property>
             <property name="text">
-             <string notr="true">0 VRC</string>
+             <string notr="true">0 RMB</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
@@ -339,7 +339,7 @@
              <string notr="true">QLabel {color: #444748}</string>
             </property>
             <property name="text">
-             <string notr="true">0 VRC</string>
+             <string notr="true">0 RMB</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
@@ -407,7 +407,7 @@
              <string notr="true">QLabel {color: #444748}</string>
             </property>
             <property name="text">
-             <string notr="true">0 VRC</string>
+             <string notr="true">0 RMB</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
@@ -463,7 +463,7 @@
              <string notr="true">QLabel {color: #444748}</string>
             </property>
             <property name="text">
-             <string notr="true">0 VRC</string>
+             <string notr="true">0 RMB</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>

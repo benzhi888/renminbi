@@ -231,7 +231,7 @@ void setupAddressWidget(QLineEdit *widget, QWidget *parent)
 void setupAmountWidget(QLineEdit *widget, QWidget *parent)
 {
     QDoubleValidator *amountValidator = new QDoubleValidator(parent);
-    amountValidator->setDecimals(BitcoinUnits::decimals(BitcoinUnits::VRC));
+    amountValidator->setDecimals(BitcoinUnits::decimals(BitcoinUnits::RMB));
     amountValidator->setBottom(0.0);
     widget->setValidator(amountValidator);
     widget->setAlignment(Qt::AlignRight|Qt::AlignVCenter);
@@ -265,7 +265,7 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!BitcoinUnits::parse(BitcoinUnits::VRC, i->second, &rv.amount))
+                if(!BitcoinUnits::parse(BitcoinUnits::RMB, i->second, &rv.amount))
                 {
                     return false;
                 }

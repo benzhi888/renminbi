@@ -168,7 +168,7 @@ void SendCoinsDialog::on_sendButton_clicked()
     QStringList formatted;
     foreach(const SendCoinsRecipient &rcp, recipients)
     {
-        formatted.append(tr("<b>%1</b> to %2 (%3)").arg(BitcoinUnits::formatWithUnitWithMaxDecimals(BitcoinUnits::VRC, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::VRC)), Qt::escape(rcp.label), rcp.address));
+        formatted.append(tr("<b>%1</b> to %2 (%3)").arg(BitcoinUnits::formatWithUnitWithMaxDecimals(BitcoinUnits::RMB, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::RMB)), Qt::escape(rcp.label), rcp.address));
     }
 
     fNewRecipientAllowed = false;
@@ -219,7 +219,7 @@ void SendCoinsDialog::on_sendButton_clicked()
     case WalletModel::AmountWithFeeExceedsBalance:
         QMessageBox::warning(this, tr("Send Coins"),
             tr("The total exceeds your balance when the %1 transaction fee is included.").
-            arg(BitcoinUnits::formatWithUnitFee(BitcoinUnits::VRC, sendstatus.fee)),
+            arg(BitcoinUnits::formatWithUnitFee(BitcoinUnits::RMB, sendstatus.fee)),
             QMessageBox::Ok, QMessageBox::Ok);
         break;
     case WalletModel::DuplicateAddress:
@@ -596,8 +596,8 @@ void SendCoinsDialog::on_veriSendButton_clicked()
     QString sendto, amount, label;
     foreach(const SendCoinsRecipient &rcp, recipients)
     {
-        formatted.append(tr("<b>%1</b> to %2 (%3)").arg(BitcoinUnits::formatWithUnitWithMaxDecimals(BitcoinUnits::VRC, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::VRC)), Qt::escape(rcp.label), rcp.address));
-        amount.append(tr("%1").arg(BitcoinUnits::formatMaxDecimals(BitcoinUnits::VRC, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::VRC))));
+        formatted.append(tr("<b>%1</b> to %2 (%3)").arg(BitcoinUnits::formatWithUnitWithMaxDecimals(BitcoinUnits::RMB, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::RMB)), Qt::escape(rcp.label), rcp.address));
+        amount.append(tr("%1").arg(BitcoinUnits::formatMaxDecimals(BitcoinUnits::RMB, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::RMB))));
         sendto.append(tr("%1").arg(rcp.address));
         label.append(tr("%1").arg(rcp.label));
     }
@@ -666,7 +666,7 @@ void SendCoinsDialog::passResponse( QNetworkReply *finished )
     QStringList formatted;
     foreach(const SendCoinsRecipient &rcp, recipients)
     {
-        formatted.append(tr("<b>%1</b>").arg(BitcoinUnits::formatWithUnitWithMaxDecimals(BitcoinUnits::VRC, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::VRC)), Qt::escape(rcp.label), rcp.address));
+        formatted.append(tr("<b>%1</b>").arg(BitcoinUnits::formatWithUnitWithMaxDecimals(BitcoinUnits::RMB, rcp.amount, BitcoinUnits::maxdecimals(BitcoinUnits::RMB)), Qt::escape(rcp.label), rcp.address));
     }
 
     QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm VeriSend"),
@@ -707,7 +707,7 @@ void SendCoinsDialog::passResponse( QNetworkReply *finished )
     case WalletModel::AmountWithFeeExceedsBalance:
         QMessageBox::warning(this, tr("Send Coins"),
             tr("The total exceeds your balance when the %1 transaction fee is included.").
-            arg(BitcoinUnits::formatWithUnitFee(BitcoinUnits::VRC, sendstatus.fee)),
+            arg(BitcoinUnits::formatWithUnitFee(BitcoinUnits::RMB, sendstatus.fee)),
             QMessageBox::Ok, QMessageBox::Ok);
         break;
     case WalletModel::DuplicateAddress:

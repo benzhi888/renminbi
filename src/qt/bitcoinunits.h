@@ -18,9 +18,9 @@ public:
      */
     enum Unit
     {
-        VRC,
-        mVRC,
-        uVRC
+        RMB,
+        mRMB,
+        uRMB
     };
 
     //! @name Static API

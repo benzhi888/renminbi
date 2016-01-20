@@ -119,7 +119,7 @@ void OptionsDialog::setModel(OptionsModel *model)
         mapper->toFirst();
     }
 
-    /* update the display unit, to not use the default ("VRC") */
+    /* update the display unit, to not use the default ("RMB") */
     updateDisplayUnit();
     /* update the decimal points */
     updateDecimalPoints();
