@@ -46,7 +46,7 @@ unsigned int nTargetSpacing = 1 * 60; // 1 minute
 unsigned int nStakeMinAge = 4 * 60 * 60; // 4 hours
 unsigned int nModifierInterval = 10 * 60; // time to elapse before new modifier is computed
 
-int nCoinbaseMaturity = 240;
+int nCoinbaseMaturity = 230;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 
@@ -1018,10 +1018,10 @@ double GetAverageStakeWeight(CBlockIndex* pindexPrev)
     return weightAve;
 }
 
-// get current inflation rate using average stake weight ~1.5-2.5% (measure of liquidity) PoST
+// get current inflation rate using average stake weight ~5% (measure of liquidity) PoST
 double GetCurrentInflationRate(double nAverageWeight)
 {
-    double inflationRate = (17*(log(nAverageWeight/20)))/100;
+    double inflationRate = (42*(log(nAverageWeight/20)))/100;
 
     return inflationRate;
 }
