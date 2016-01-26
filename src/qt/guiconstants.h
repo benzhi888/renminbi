@@ -21,7 +21,7 @@ static const int MAX_PASSPHRASE_SIZE = 1024;
 /* Transaction list -- positive amount */
 #define COLOR_POSITIVE QColor(95, 140, 95)
 /* Transaction list -- bare address (without label) */
-#define COLOR_BAREADDRESS QColor(140, 140, 140)
+#define COLOR_BAREADDRESS QColor(255, 255, 0)
 
 /* Custom colors / fonts */
 #define STR_COLOR QString("#d20000")

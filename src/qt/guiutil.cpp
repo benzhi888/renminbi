@@ -142,8 +142,8 @@ void setFontPixelSizes()
 }
 
 // Common Renminbi stylesheets
-QString veriCentralWidgetStyleSheet = QString("QStackedWidget { background: red; } ");
-QString veriTabWidgetStyleSheet = QString("QTabWidget::pane { background: redlv; color: " + STR_FONT_COLOR + "; border: 1px; }");
+QString veriCentralWidgetStyleSheet = QString("QStackedWidget { background: white; } ");
+QString veriTabWidgetStyleSheet = QString("QTabWidget::pane { background: red; color: " + STR_FONT_COLOR + "; border: 1px; }");
 
 QString veriPushButtonStyleSheet = QString("QPushButton { background: " + STR_COLOR + "; width: %1px; height: %2px; border: none; color: yellow} \
                             QPushButton:disabled { background: #EBEBEB; color: #666666; } \
@@ -156,7 +156,7 @@ QString veriToolBarStyleSheet = QString("QToolBar { background: " + STR_COLOR + 
                             QToolButton:pressed { background: " + STR_COLOR_LT + "; color: yellow; border: none; } \
                             QToolButton:checked { background: " + STR_COLOR_LT + "; color: yellow; border: none; } ");
 
-QString veriToolTipStyleSheet = QString("QToolTip { background-color: " + STR_COLOR_TTBG + "; color: yellow; border: 1px solid #EBEBEB; border-radius: 3px; margin: 0; padding: 4px; white-space: nowrap; } ");
+QString veriToolTipStyleSheet = QString("QToolTip { background-color: " + STR_COLOR_TTBG + "; color: red; border: 1px solid #EBEBEB; border-radius: 3px; margin: 0; padding: 4px; white-space: nowrap; } ");
 
 QString veriMiscStyleSheet = QString("QStatusBar { background: " + STR_COLOR + "; color: yellow; } QStatusBar::item { border: none; } QDialog { background: white; color: " + STR_FONT_COLOR + "; } QTableView::item:hover { background: #EBEBEB; color: " + STR_FONT_COLOR + "; } ");
 
