@@ -142,42 +142,42 @@ void setFontPixelSizes()
 }
 
 // Common Renminbi stylesheets
-QString veriCentralWidgetStyleSheet = QString("QStackedWidget { background: white; } ");
-QString veriTabWidgetStyleSheet = QString("QTabWidget::pane { background: white; color: " + STR_FONT_COLOR + "; border: 1px; }");
+QString veriCentralWidgetStyleSheet = QString("QStackedWidget { background: red; } ");
+QString veriTabWidgetStyleSheet = QString("QTabWidget::pane { background: redlv; color: " + STR_FONT_COLOR + "; border: 1px; }");
 
-QString veriPushButtonStyleSheet = QString("QPushButton { background: " + STR_COLOR + "; width: %1px; height: %2px; border: none; color: white} \
+QString veriPushButtonStyleSheet = QString("QPushButton { background: " + STR_COLOR + "; width: %1px; height: %2px; border: none; color: yellow} \
                             QPushButton:disabled { background: #EBEBEB; color: #666666; } \
                             QPushButton:hover { background: " + STR_COLOR_LT + "; } \
                             QPushButton:pressed { background: " + STR_COLOR_LT + "; } ").arg(BUTTON_WIDTH).arg(BUTTON_HEIGHT);
 
-QString veriToolBarStyleSheet = QString("QToolBar { background: " + STR_COLOR + "; color: white; border: none; } \
-                            QToolButton { background: " + STR_COLOR + "; color: white; border: none; font-family: Lato; font-style: normal; font-weight: normal; font-size: 12px; } \
-                            QToolButton:hover { background: " + STR_COLOR_HOVER + "; color: white; border: none; } \
-                            QToolButton:pressed { background: " + STR_COLOR_LT + "; color: white; border: none; } \
-                            QToolButton:checked { background: " + STR_COLOR_LT + "; color: white; border: none; } ");
+QString veriToolBarStyleSheet = QString("QToolBar { background: " + STR_COLOR + "; color: yellow; border: none; } \
+                            QToolButton { background: " + STR_COLOR + "; color: yellow; border: none; font-family: Lato; font-style: normal; font-weight: bold; font-size: 12px; } \
+                            QToolButton:hover { background: " + STR_COLOR_HOVER + "; color: yellow; border: none; } \
+                            QToolButton:pressed { background: " + STR_COLOR_LT + "; color: yellow; border: none; } \
+                            QToolButton:checked { background: " + STR_COLOR_LT + "; color: yellow; border: none; } ");
 
-QString veriToolTipStyleSheet = QString("QToolTip { background-color: " + STR_COLOR_TTBG + "; color: white; border: 1px solid #EBEBEB; border-radius: 3px; margin: 0; padding: 4px; white-space: nowrap; } ");
+QString veriToolTipStyleSheet = QString("QToolTip { background-color: " + STR_COLOR_TTBG + "; color: yellow; border: 1px solid #EBEBEB; border-radius: 3px; margin: 0; padding: 4px; white-space: nowrap; } ");
 
-QString veriMiscStyleSheet = QString("QStatusBar { background: " + STR_COLOR + "; color: white; } QStatusBar::item { border: none; } QDialog { background: white; color: " + STR_FONT_COLOR + "; } QTableView::item:hover { background: #EBEBEB; color: " + STR_FONT_COLOR + "; } ");
+QString veriMiscStyleSheet = QString("QStatusBar { background: " + STR_COLOR + "; color: yellow; } QStatusBar::item { border: none; } QDialog { background: white; color: " + STR_FONT_COLOR + "; } QTableView::item:hover { background: #EBEBEB; color: " + STR_FONT_COLOR + "; } ");
 
-QString veriMenuStyleSheet = QString("QMenuBar { background-color: " + STR_COLOR_HOVER + "; color: white; } \
+QString veriMenuStyleSheet = QString("QMenuBar { background-color: " + STR_COLOR_HOVER + "; color: yellow; } \
                             QMenuBar::item { background-color: transparent; margin: 0px; padding: 4px 16px 4px 16px; } \
-                            QMenuBar::item:selected { background-color: " + STR_COLOR + "; color: white; } \
-                            QMenu { background-color: " + STR_COLOR_HOVER + "; color: white; } \
+                            QMenuBar::item:selected { background-color: " + STR_COLOR + "; color: yellow; } \
+                            QMenu { background-color: " + STR_COLOR_HOVER + "; color: yellow; } \
                             QMenu::item { background-color: transparent; margin: 0px 0px 4px 4px; padding: 4px 8px 4px 24px; } \
-                            QMenu::item:selected { background-color: " + STR_COLOR + "; color: white; }");
+                            QMenu::item:selected { background-color: " + STR_COLOR + "; color: yellow; }");
 
 // Put them all together
 QString veriStyleSheet = veriCentralWidgetStyleSheet + veriPushButtonStyleSheet + veriToolBarStyleSheet + veriToolTipStyleSheet + veriMiscStyleSheet + veriMenuStyleSheet;
 
 
 // Special styling for AskPassphrasePage
-QString veriAskPassphrasePushButtonStyleSheet = QString("QPushButton { background: " + STR_COLOR_LT + "; width: %1px; height: %2px; border: none; color: white} \
+QString veriAskPassphrasePushButtonStyleSheet = QString("QPushButton { background: " + STR_COLOR_LT + "; width: %1px; height: %2px; border: none; color: yellow} \
                             QPushButton:disabled { background: #EBEBEB; color: #666666; } \
                             QPushButton:hover { background: " + STR_COLOR_LT + "; } \
                             QPushButton:pressed { background: " + STR_COLOR_LT + "; } ").arg(BUTTON_WIDTH).arg(BUTTON_HEIGHT);
 
-QString veriAskPassphrasePageStyleSheet = QString("QDialog { border-image: url(:images/askPassphraseBackground) repeat 0px 0px; background-color: " + STR_COLOR + "; } QLabel { color: white; } QLineEdit { background: white; color: " + STR_COLOR + "; } ") + veriAskPassphrasePushButtonStyleSheet + veriToolTipStyleSheet;
+QString veriAskPassphrasePageStyleSheet = QString("QDialog { border-image: url(:images/askPassphraseBackground) repeat 0px 0px; background-color: " + STR_COLOR + "; } QLabel { color: yellow; } QLineEdit { background: red; color: " + STR_COLOR + "; } ") + veriAskPassphrasePushButtonStyleSheet + veriToolTipStyleSheet;
 
 // Setup header and styles
 QGraphicsView *header(QWidget *parent, QString backgroundImage)

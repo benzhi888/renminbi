@@ -18,25 +18,7 @@
     <number>8</number>
    </property>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <widget class="QPushButton" name="btnRenminbi">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>Send Renminbi</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btnBitcoin">
-       <property name="text">
-        <string>Send Renminbi to Bitcoin (VeriBit)</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <layout class="QHBoxLayout" name="horizontalLayout_3"/>
    </item>
    <item>
     <widget class="QFrame" name="frameCoinControl">
@@ -569,7 +551,7 @@
         <x>0</x>
         <y>0</y>
         <width>1006</width>
-        <height>516</height>
+        <height>520</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
