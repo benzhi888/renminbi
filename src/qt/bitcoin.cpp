@@ -276,14 +276,14 @@ int main(int argc, char *argv[])
                     }
                     else
                     {
-                        window.reloadBlockchain(true);
+                        //window.reloadBlockchain(true);
                     }
                 }
                 else
                 {
                     if (fNewVersion) // Prompt user for upgrade
                     {
-                        window.checkForUpdate();
+                        //window.checkForUpdate();
                     }
                 }
 
