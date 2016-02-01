@@ -1004,7 +1004,7 @@ double GetAverageStakeWeight(CBlockIndex* pindexPrev)
 
     int i;
     CBlockIndex* currentBlockIndex = pindexPrev;
-    for (i = 0; currentBlockIndex && i < 60; i++)
+    for (i = 0; currentBlockIndex && i < 240; i++)
     {
         double tempWeight = GetPoSKernelPS(currentBlockIndex);
         weightSum += tempWeight;
@@ -1084,7 +1084,7 @@ int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, CBlockIndex* pind
 #ifdef fTestNet
 static const int64_t nTargetTimespan = 3 * 60;  // 3 mins
 #else
-static const int64_t nTargetTimespan = 16 * 60;  // 16 mins
+static const int64_t nTargetTimespan = 10 * 60;  // 10 mins
 #endif
 
 //
