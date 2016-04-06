@@ -988,7 +988,7 @@ int64_t GetStakeTimeFactoredWeight(int64_t timeWeight, int64_t bnCoinDayWeight, 
     return factoredTimeWeight;
 }
 
-// get average stake weight of last 60 blocks PoST
+// get average stake weight of last 240 blocks PoST
 double GetAverageStakeWeight(CBlockIndex* pindexPrev)
 {
     double weightSum = 0.0, weightAve = 0.0;
