@@ -1699,7 +1699,6 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     if (IsProofOfStake())
     {
         int64_t nCalculatedStakeReward;
-        int currentHeight = pindex->pprev->nHeight+1;
 
         // Renminbi: coin stake tx earns reward instead of paying fee
         uint64_t nStakeTime;
