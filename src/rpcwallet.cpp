@@ -87,8 +87,6 @@ Value getinfo(const Array& params, bool fHelp)
     
     obj.push_back(Pair("difficulty",    diff));
 
-    if (PoSTprotocol(pindexBest->nHeight))
-    {
         double nNetworkWeight = GetAverageStakeWeight(pindexBest->pprev);
     obj.push_back(Pair("networkweight", nNetworkWeight));
         if (nNetworkWeight > 0)
@@ -101,7 +99,6 @@ Value getinfo(const Array& params, bool fHelp)
     obj.push_back(Pair("inflationrate", "n/a"));
     obj.push_back(Pair("interestrate",  "n/a"));
         }
-    }
 
     obj.push_back(Pair("blocksperhour", GetBlockRatePerHour()));
     obj.push_back(Pair("testnet",       fTestNet));
@@ -142,10 +139,7 @@ Value getinterestrate(const Array& params, bool fHelp)
             "getinterestrate\n"
             "Returns the current staking interest rate.");
 
-    if (PoSTprotocol(pindexBest->nHeight))
         return (GetCurrentInterestRate(pindexBest->pprev));
-    else
-        return (GetCurrentInflationRate(GetAverageStakeWeight(pindexBest->pprev)));
 }
 
 Value getnewpubkey(const Array& params, bool fHelp)
